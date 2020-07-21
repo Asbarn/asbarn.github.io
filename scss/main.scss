@@ -1,9 +1,9 @@
 $main-color: #444;
 $text-secondary-color: #a72828;
 $home-image: url("../images/kfKjrWvSSOE.jpg");
+$work-image: url("../images/background3.jpg");
 $my-image: url("../images/portrait.jpg");
 //$home-image: url(https://picsum.photos/1920/1080);
-$show-home-image: true;
 $background-opacity: 0.9;
 @mixin easeOut {
     transition: all 1s ease-out;
@@ -29,29 +29,24 @@ $background-opacity: 0.9;
     }
 }
 @mixin background {
-    @if $show-home-image {
-        &#bg-img {
-            background-image: $home-image;
-            background-attachment: fixed;
-            background-size: cover;
-
-            &:after {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 100%;
-                height: 100%;
-                z-index: -2;
-                background: rgba($main-color, $background-opacity);
-            }
-        }
+    &#bg-img {
+        background-image: $home-image;
+        background-attachment: fixed;
+        background-size: cover;
     }
 }
 
-* {
-    box-sizing: border-box;
+@mixin background1 {
+    &#work {
+        background-image: $work-image;
+        background-attachment: fixed;
+        background-size: cover;
+    }
 }
+
+// * {
+//     box-sizing: border-box; //???
+// }
 
 body {
     @include background;
@@ -61,16 +56,20 @@ body {
     margin: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
+    //overflow:hidden;
+   
 }
 h1,
 h2,
-h3 {
+h3,
+p {
+    padding: 0 15px;
     margin: 0;
     font-weight: 400;
-
-    background: rgba(lighten($main-color, 2.5), 0.5);
+    background: rgba(lighten($main-color, 2.5), 0.8);
     &.lg-heading {
         font-size: 6rem;
+        margin: 15px 15px;
     }
     &.sm-heading {
         margin-bottom: 2rem;
@@ -110,7 +109,7 @@ main {
     &#home {
         overflow: hidden;
         h1 {
-            margin-top: 20vh;
+            margin-top: 20px;
         }
     }
 }
@@ -234,9 +233,84 @@ main {
     }
 }
 
+.about-info {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-areas:
+        "bioimage bio bio"
+        "job1 job2 job3";
+    grid-template-columns: repeat(3, 1fr);
+
+    .bio-image {
+        grid-area: bioimage;
+        margin: auto;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        border: $text-secondary-color 3px solid;
+    }
+
+    .bio {
+        grid-area: bio;
+        font-size: 1.5rem;
+    }
+
+    .job-1 {
+        grid-area: job1;
+    }
+
+    .job-2 {
+        grid-area: job2;
+    }
+
+    .job-3 {
+        grid-area: job3;
+    }
+
+    .job {
+        background: lighten($main-color, 5);
+        padding: 0.5rem;
+        border-bottom: $text-secondary-color 5px solid;
+    }
+}
+#work {
+    background-image: $work-image;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+.projects {
+    display: grid;
+    grid-gap: 0.7rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    img {
+        width: 100%;
+        border: 3px #fff solid;
+
+        &:hover {
+            opacity: 0.5;
+            border-color: $text-secondary-color;
+            @include easeOut;
+        }
+    }
+}
+
 @include mediaSmall {
-    main#home h1 {
-        margin-top: 10vh;
+    main {
+        padding: 2rem;
+        #home h1 {
+            margin-top: 10vh;
+        }
+
+        .lg-heading {
+            margin-top: 1rem;
+            font-size: 5rem;
+        }
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
     }
 }
 @include mediaMd {
@@ -267,47 +341,25 @@ main {
             height: 150px;
         }
     }
+    .about-info {
+        grid-template-areas:
+            "bioimage"
+            "bio"
+            "job1"
+            "job2"
+            "job3";
+
+        grid-template-columns: 1fr;
+    }
+
+    .projects {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 @include mediaLg {
+    .projects {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 @include mediaXl {
-}
-
-.about-info {
-    display: grid;
-    grid-gap: 30px;
-    grid-template-areas:
-        "bioimage bio bio"
-        "job1 job2 job3";
-    grid-template-columns: repeat(3, 1fr);
-
-    .bio-image {
-        grid-area: bioimage;
-        margin: auto;
-        border-radius: 50%;
-        border: $text-secondary-color 3px solid;
-    }
-
-    .bio {
-        grid-area: bio;
-        font-size: 1.5rem;
-    }
-
-    .job-1 {
-        grid-area: job1;
-    }
-
-    .job-2 {
-        grid-area: job2;
-    }
-
-    .job-3 {
-        grid-area: job3;
-    }
-
-    .job {
-        background: lighten($main-color, 5);
-        padding: 0.5rem;
-        border-bottom: $text-secondary-color 5px solid;
-    }
 }

@@ -6,7 +6,7 @@ $my-image: url("../images/portrait.jpg");
 //$home-image: url(https://picsum.photos/1920/1080);
 $background-opacity: 0.9;
 @mixin easeOut {
-    transition: all 1s ease-out;
+    transition: all 0.4s ease-out;
 }
 @mixin mediaSmall {
     @media screen and (max-width: 500px) {
@@ -56,7 +56,7 @@ body {
     margin: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
-    //overflow:hidden;
+    overflow:hidden;
    
 }
 h1,

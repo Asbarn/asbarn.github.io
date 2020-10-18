@@ -56,7 +56,6 @@ body {
     margin: 0;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
-    overflow:hidden;
    
 }
 h1,
@@ -126,12 +125,14 @@ main {
 
     &-branding,
     &-nav {
+        position:absolute;
+        right:0;
         display: flex;
         flex-flow: column wrap;
         align-items: center;
         justify-content: center;
         float: left;
-        width: 50%;
+        width: 25%;
         height: 100vh;
     }
     &-nav {
@@ -323,24 +324,15 @@ main {
             margin-bottom: 1rem;
         }
     }
-    ul.menu-nav,
-    div.menu-branding {
+    ul.menu-nav {
         float: none;
         width: 100%;
     }
 
     .menu-nav {
-        height: 75vh;
         font-size: 20px;
     }
-
-    .menu-branding {
-        height: 25vh;
-        .portrait {
-            width: 150px;
-            height: 150px;
-        }
-    }
+    
     .about-info {
         grid-template-areas:
             "bioimage"

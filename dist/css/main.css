@@ -90,7 +90,7 @@ main {
       transform: translate3d(0, 0, 0); }
     .menu-branding .portrait {
       width: 300px;
-      height: 300px;
+      height: 200px;
       background: url("../images/portrait.jpg");
       background-size: cover;
       border-radius: 50%;
@@ -144,8 +144,8 @@ main {
   .about-info .bio-image {
     grid-area: bioimage;
     margin: auto;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: #a72828 3px solid; }
   .about-info .bio {
